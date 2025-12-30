@@ -159,4 +159,4 @@ defense_compare <- rbind(cbq4_defense, cbq13_defense, otherq4_defense, otherq13_
 dropbacks_compare <- rbind(cbq4_dropbacks, cbq13_dropbacks, otherq4_dropbacks, otherq13_dropbacks, oplq4_dropbacks, opq13_dropbacks, q4_dropbacks, q13_dropbacks, dropbacks, control_dropbacks)
 special_teams_compare <- rbind(cbq4_special_teams, cbq13_special_teams, otherq4_special_teams, otherq13_special_teams, oplq4_special_teams, opq13_special_teams, q4_special_teams, q13_special_teams, special_teams, control_special_teams)
 
-save(offense_compare, defense_compare, dropbacks_compare, special_teams_compare, file=("BearsCompare_Subset_Wk17.RData"))
+save(offense_compare, defense_compare, dropbacks_compare, special_teams_compare, file=("BearsResults_Wk17.RData"))
