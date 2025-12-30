@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>body{background-color:white;}</style>
+<style type="text/css">.tabwid {
+font-size: initial;
+padding-bottom: 1em;
+}
+.tabwid table{
+border-spacing:0px !important;
+border-collapse:collapse;
+line-height:1;
+margin-left:auto;
+margin-right:auto;
+border-width: 0;
+border-color: transparent;
+caption-side: top;
+}
+.tabwid-caption-bottom table{
+caption-side: bottom;
+}
+.tabwid_left table{
+margin-left:0;
+}
+.tabwid_right table{
+margin-right:0;
+}
+.tabwid td, .tabwid th {
+padding: 0;
+}
+.tabwid a {
+text-decoration: none;
+}
+.tabwid thead {
+background-color: transparent;
+}
+.tabwid tfoot {
+background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+.katex-display {
+margin: 0 0 !important;
+}
+</style>
+<script>document.addEventListener("DOMContentLoaded", function(event) {
+  var els = document.querySelectorAll(".tabwid");
+  var tabwid_link = document.querySelector('link[href*="tabwid.css"]')
+  if (tabwid_link === null) {
+    const tabwid_styles = document.evaluate("//style[contains(., 'tabwid')]", document, null, XPathResult.ANY_TYPE, null );
+    tabwid_link = tabwid_styles.iterateNext();
+  }
+
+  Array.prototype.forEach.call(els, function(template) {
+      const dest = document.createElement("div");
+      template.parentNode.insertBefore(dest, template.nextSibling)
+      dest.setAttribute("class", "flextable-shadow-host");
+      const fantome = dest.attachShadow({mode: 'open'});
+      fantome.appendChild(template);
+      if (tabwid_link !== null) {
+        fantome.appendChild(tabwid_link.cloneNode(true));
+      }
+  });
+
+  const shadowHosts = document.querySelectorAll('.flextable-shadow-host:not(:has(div > table.no-shadow-dom))');
+  shadowHosts.forEach(host => {
+    if (host.shadowRoot) {
+      const spanElements = host.shadowRoot.querySelector('div > table > caption > span[id]');
+      if (spanElements) {
+        const id = spanElements.getAttribute("id");
+        host.setAttribute("id", id);
+      }
+    }
+  });
+
+});
+</script>
+
+</head>
+<body>
+<style></style>
+<div class="tabwid"><style>.cl-a670b4ac{}.cl-a66c0c54{font-family:'Arial';font-size:10pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-a66c0c5e{font-family:'Arial';font-size:10pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-a66df708{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:6pt;padding-top:6pt;padding-left:6pt;padding-right:6pt;line-height: 1;background-color:transparent;}.cl-a66df712{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:6pt;padding-top:6pt;padding-left:6pt;padding-right:6pt;line-height: 1;background-color:transparent;}.cl-a66e0e32{width:0.75in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a66e0e3c{width:0.75in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a66e0e3d{width:0.75in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a66e0e46{width:0.75in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a66e0e47{width:0.75in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a66e0e48{width:0.75in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a66e0e50{width:0.75in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a66e0e51{width:0.75in;background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-a670b4ac"><thead><tr style="overflow-wrap:break-word;"><th class="cl-a66e0e32"><p class="cl-a66df708"><span class="cl-a66c0c54">subset</span></p></th><th class="cl-a66e0e3c"><p class="cl-a66df712"><span class="cl-a66c0c54">epa</span></p></th><th class="cl-a66e0e3c"><p class="cl-a66df712"><span class="cl-a66c0c54">big_plays</span></p></th><th class="cl-a66e0e3c"><p class="cl-a66df712"><span class="cl-a66c0c54">bad_plays</span></p></th><th class="cl-a66e0e3c"><p class="cl-a66df712"><span class="cl-a66c0c54">big_play_rate</span></p></th><th class="cl-a66e0e3c"><p class="cl-a66df712"><span class="cl-a66c0c54">bad_play_rate</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-a66e0e3d"><p class="cl-a66df708"><span class="cl-a66c0c5e">Fourth quarter of</span><br><span class="cl-a66c0c5e">comeback games</span></p></td><td class="cl-a66e0e46"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.049</span></p></td><td class="cl-a66e0e46"><p class="cl-a66df712"><span class="cl-a66c0c5e">7</span></p></td><td class="cl-a66e0e46"><p class="cl-a66df712"><span class="cl-a66c0c5e">6</span></p></td><td class="cl-a66e0e46"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.143</span></p></td><td class="cl-a66e0e46"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.122</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a66e0e47"><p class="cl-a66df708"><span class="cl-a66c0c5e">First three quarters</span><br><span class="cl-a66c0c5e">of comeback games</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">-0.035</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">10</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">13</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.088</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.115</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a66e0e47"><p class="cl-a66df708"><span class="cl-a66c0c5e">Fourth quarter of</span><br><span class="cl-a66c0c5e">all other games</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.012</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">3</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">4</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.048</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.065</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a66e0e47"><p class="cl-a66df708"><span class="cl-a66c0c5e">First three quarters of all other games</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.020</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">13</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">17</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.062</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.082</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a66e0e47"><p class="cl-a66df708"><span class="cl-a66c0c5e">Fourth quarter of</span><br><span class="cl-a66c0c5e">failed comebacks</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">-0.179</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">2</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.000</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.095</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a66e0e47"><p class="cl-a66df708"><span class="cl-a66c0c5e">First three quarters of comebacks</span><br><span class="cl-a66c0c5e">and failed comebacks</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">-0.034</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">14</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">18</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.078</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.101</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a66e0e47"><p class="cl-a66df708"><span class="cl-a66c0c5e">Fourth quarter of all games</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.028</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">10</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">10</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.090</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.090</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a66e0e47"><p class="cl-a66df708"><span class="cl-a66c0c5e">First three quarters of all games</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.000</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">23</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">30</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.072</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.093</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a66e0e47"><p class="cl-a66df708"><span class="cl-a66c0c5e">All special teams plays</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.008</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">33</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">40</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.076</span></p></td><td class="cl-a66e0e48"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.093</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a66e0e50"><p class="cl-a66df708"><span class="cl-a66c0c5e">All plays excluding the fourth</span><br><span class="cl-a66c0c5e">quarters of comebacks</span></p></td><td class="cl-a66e0e51"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.002</span></p></td><td class="cl-a66e0e51"><p class="cl-a66df712"><span class="cl-a66c0c5e">26</span></p></td><td class="cl-a66e0e51"><p class="cl-a66df712"><span class="cl-a66c0c5e">34</span></p></td><td class="cl-a66e0e51"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.068</span></p></td><td class="cl-a66e0e51"><p class="cl-a66df712"><span class="cl-a66c0c5e">0.089</span></p></td></tr></tbody></table></div>
+</body>
+</html>
