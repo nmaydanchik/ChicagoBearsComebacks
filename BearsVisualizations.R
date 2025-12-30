@@ -5,7 +5,7 @@ library(scales)
 library(flextable)
 
 # Load results
-load("BearsCompare_Subset_Wk17.RData")
+load("BearsResults_Wk17.RData")
 
 # Convert results to data frames with numeric entries, rename subsets for visualizations 
 offense_compare <- as.data.frame(cbind(sample=rownames(offense_compare), offense_compare), row.names = FALSE); offense_compare[,2:20]=sapply(offense_compare[,2:20], as.numeric)
@@ -17,7 +17,7 @@ defense_compare$sample <- c("Fourth quarter of\ncomeback games", "First three qu
 special_teams_compare <- as.data.frame(cbind(sample=rownames(special_teams_compare), special_teams_compare), row.names = FALSE); special_teams_compare[,2:6]=sapply(special_teams_compare[,2:6], as.numeric)
 special_teams_compare$sample <- c("Fourth quarter of\ncomeback games", "First three quarters\nof comeback games", "Fourth quarter of\nall other games", "First three quarters of all other games", "Fourth quarter of\nfailed comebacks", "First three quarters of comebacks\nand failed comebacks", "Fourth quarter of all games", "First three quarters of all games", "All special teams plays", "All plays excluding the fourth\nquarters of comebacks")
 
-setwd("Wk17Figures/")
+setwd("Figures/")
 
 # Stage 1: Comebacks vs Season wide metrics vs Season excluding comebacks ----
 
