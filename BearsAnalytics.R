@@ -4,7 +4,7 @@ comeback_wins <- c(4, 6, 9, 10, 11, 16) # weeks that the Bears had comeback wins
 one_pos_losses <- c(1, 14, 17) # weeks that the Bears lost one-possession games (failed comebacks: Vikings--Wk1, Packers--Wk14, 49ers--Wk17)
 
 # Load data
-gamefiles <- list.files("pbps", full.names = TRUE) # Play-by-play raw data files are in pbps/ folder  
+gamefiles <- list.files("PlayByPlay", full.names = TRUE) # Play-by-play raw data files are in PlayByPlay/ folder  
 gamelogs <- lapply(gamefiles, read_csv, col_select=c(qtr, fixed_drive, posteam, yrdln, down, ydstogo, play_type, yards_gained, touchdown, fumble_lost, interception, penalty, fd, complete_pass, cp, cpoe, ep, epa, success, air_yards, return_yards, passer_player_name, rusher_player_name, receiver_player_name, time, total_home_score, total_away_score, fixed_drive_result, series, series_result, series_success, vegas_home_wp, vegas_home_wpa, home_wp, desc, home_team, away_team, week)); rm(gamefiles)
 seasonpbp <- bind_rows(gamelogs) %>% arrange(week); rm(gamelogs) # Data frame of every play in every Bears game for Weeks 1-17 (16 games)
 # split_offense <- lapply(gamelogs, filter, posteam=="CHI", !is.na(down), play_type %in% c("pass","run", "qb_kneel", "qb_spike")) # Used for reconciliation
