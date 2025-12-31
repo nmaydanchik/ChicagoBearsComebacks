@@ -22,15 +22,15 @@ My full write-up is in the repository as a pdf and is available at [website].
 
 ## Repository File Structure
 
-├── data/ # Processed play-by-play datasets
-├── scripts/ # R scripts for analysis and visualization
-├── figures/ # Plots and tables
-├── BearsComebacks.pdf # Final article
+├── data/ # Processed play-by-play datasets\
+├── scripts/ # R scripts for analysis and visualization\
+├── figures/ # Plots and tables\
+├── BearsComebacks.pdf # Final article\
 └── README.md
 
 ## Contact
 
-I'd love to connect and talk more about this project and beyond!
+I'd love to connect and talk more about this project and beyond!\
 Nate Maydanchik: www.linkedin.com/in/nate-maydanchik
 
 
