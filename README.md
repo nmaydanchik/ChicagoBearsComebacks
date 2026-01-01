@@ -25,6 +25,7 @@ My full write-up is in the repository as BearsComebacksArticle.pdf and is availa
 
 ## Repository File Structure
 
+<<<<<<< HEAD
 ├── data/ # Processed play-by-play datasets
 ├── figures/ # Plots and tables
 
