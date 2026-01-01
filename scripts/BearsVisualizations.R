@@ -51,7 +51,7 @@ olong$play_type <- factor(olong$play_type, c("big", "bad"))
 
 olong %>% ggplot(mapping=aes(x=sample, y=rate, shape=play_type, color=play_type)) +
   geom_point(size=5) +
-#  geom_text(aes(label=percent(round(rate,3)), vjust=(if_else(play_type=="big", -1.2, 2.0))), size=2.8, color="black") +
+  #  geom_text(aes(label=percent(round(rate,3)), vjust=(if_else(play_type=="big", -1.2, 2.0))), size=2.8, color="black") +
   coord_cartesian(ylim=c(0,0.25)) +
   scale_y_continuous(labels=scales::percent) +
   guides(fill=guide_legend(title="Big vs. Bad play")) +
@@ -116,7 +116,7 @@ p1 <- offense %>% ggplot(mapping=aes(x=sample, y=completion_percent, fill=sample
   theme(legend.position = "none") +
   labs(x="", y="", subtitle="Completion percentage", title="Caleb Williams is not completing more passes in comebacks") +
   theme(axis.title.x=element_blank(), axis.ticks.x=element_blank(), axis.text.x = element_blank())
-  
+
 p2 <- offense %>% ggplot(mapping=aes(x=sample, y=completion_percent_oe, fill=sample)) +
   geom_col(position=position_dodge(width=0.8)) +
   geom_text(aes(label=percent(round(completion_percent_oe,3))), vjust=1.25, size=2.8, color="black") +
@@ -166,7 +166,8 @@ p1 <- defense %>% ggplot(mapping=aes(x=sample, y=epa, fill=sample)) +
   labs(y="", x="", title="Bears defense is playing worse during comebacks", subtitle="Bears defense EPA\nallowed per play") + 
   theme(axis.text.x=element_blank()) +
   theme(axis.ticks.x=element_blank()) +
-  coord_cartesian(ylim=c(-0.02,0.02)) +
+  coord_cartesian(ylim=c(0,0.015)) +
+  #  scale_y_continuous(breaks=c(0,0.003,0.006,0.009,0.012)) +
   geom_hline(yintercept=0) +
   theme(legend.position = "none")
 
@@ -220,7 +221,7 @@ special_teams %>% ggplot(mapping=aes(x=sample, y=epa, fill=sample)) +
   geom_col(position=position_dodge(width=0.8)) +
   geom_text(aes(label=round(epa,3)), vjust=-0.3, size=2.8, color="black") +
   scale_fill_manual(values=mycols) +
-#  coord_cartesian(ylim=c(0,0.15)) +
+  #  coord_cartesian(ylim=c(0,0.15)) +
   geom_hline(yintercept=0) +
   ggthemes::theme_solarized_2() +
   theme(legend.position = "none") +
@@ -229,25 +230,21 @@ ggsave("Stage1/Stage1_SpecialTeamsEPA.png", width=7, height=4, dpi=600)
 
 # Stage 2: Comparison vs first three quarters of those games and other fourth quarters --------
 
-offense_2 <- offense_compare[c(1,2,3),]; offense_2$sample <- factor(offense_2$sample, c("First three quarters\nof comeback games", "Fourth quarter of\nall other games", "Fourth quarter of\ncomeback games"))
+offense_2 <- offense_compare[c(1,2,3,4),]; offense_2$sample <- factor(offense_2$sample, c("First three quarters\nof all other games", "Fourth quarter of\nall other games", "First three quarters\nof comeback games", "Fourth quarter of\ncomeback games"))
 
 # EPA per play
 
-offense <- offense_2 %>% select(sample, epa, epa_pass, epa_run, epa_dropback); colnames(offense)[2:5]=c("epa_All plays", "epa_Pass", "epa_Run", "epa_Dropbacks")
-olong <- pivot_longer(offense, names_to = "play_type", names_prefix="epa_",cols=starts_with("epa_"), values_to="epa")
-
-mycols <- RColorBrewer::brewer.pal(8, "RdYlBu")[c(6,3,2)]
-olong %>% ggplot(mapping=aes(x=sample, y=epa, fill=sample)) +
+mycols <- RColorBrewer::brewer.pal(8, "RdYlBu")[c(7,8,3,2)]
+offense_2 %>% ggplot(mapping=aes(x=sample, y=epa, fill=sample)) +
   geom_col(position=position_dodge(width=0.8)) +
   geom_text(aes(label=round(epa,2), vjust=if_else(epa>0, -0.3, 1.25)), size=2.8, color="black") +
-  facet_wrap(~play_type, nrow=1, strip.position="bottom") +
-  ggthemes::theme_solarized_2() +
-  theme(axis.text.x=element_blank(), axis.ticks.x=element_blank()) +
   scale_fill_manual(values=mycols) +
+  coord_cartesian(ylim=c(-.04,0.3)) +
   geom_hline(yintercept=0) +
-  labs(title="Bears offensive efficiency during\ncomebacks is an anomaly", x="", y="EPA per play") +
-  guides(fill=guide_legend(title="Plays"))
-ggsave("Stage2/Stage2_OffenseEPA.png", width=7, height=4, dpi=600)
+  ggthemes::theme_solarized_2() +
+  theme(legend.position = "none") +
+  labs(x="", y="EPA per play", title="Bears offensive efficiency during\ncomebacks is an anomaly")
+ggsave("Stage2_New/Stage2_OffenseEPA.png", width=7, height=4, dpi=600)
 
 # Big/Bad play rate
 
@@ -257,7 +254,7 @@ olong$play_type <- factor(olong$play_type, c("big", "bad"))
 
 olong %>% ggplot(mapping=aes(x=sample, y=rate, group=play_type, shape=play_type, color=play_type, linetype = play_type)) +
   geom_point(size=5) +
-  geom_line() +
+  #  geom_line() +
   coord_cartesian(ylim=c(.15,0.25)) +
   scale_y_continuous(labels=scales::percent) +
   guides(fill=guide_legend(title="Big vs. Bad play")) +
@@ -265,14 +262,11 @@ olong %>% ggplot(mapping=aes(x=sample, y=rate, group=play_type, shape=play_type,
        subtitle="Y-axis truncated for visual clarity") +
   ggthemes::theme_solarized_2() +
   guides(color=guide_legend(title="Classification"), shape=guide_legend(title="Classification"), linetype=guide_legend(title="Classification"))
-ggsave("Stage2/Stage2_BigBad.png", width=7, height=4, dpi=600)
+ggsave("Stage2_New/Stage2_BigBad.png", width=7, height=4, dpi=600)
 
 # Success Rate
 
-offense_3 <- offense_compare[c(1,2,3, 9),]; offense_3$sample <- factor(offense_3$sample, c("All offensive plays", "First three quarters\nof comeback games", "Fourth quarter of\nall other games", "Fourth quarter of\ncomeback games"))
-
-mycols <- RColorBrewer::brewer.pal(8, "RdYlBu")[c(8,6,3,2)]
-offense_3 %>% ggplot(mapping=aes(x=sample, y=success_rate, fill=sample)) +
+offense_2 %>% ggplot(mapping=aes(x=sample, y=success_rate, fill=sample)) +
   geom_col(position=position_dodge(width=0.8)) +
   geom_text(aes(label=percent(round(success_rate,3))), vjust=-0.3, size=2.8, color="black") +
   scale_fill_manual(values=mycols) +
@@ -283,11 +277,10 @@ offense_3 %>% ggplot(mapping=aes(x=sample, y=success_rate, fill=sample)) +
   theme(legend.position = "none") +
   labs(x="", y="Success Rate", title = "Bears offense Success Rate improvement is not fourth\nquarter specific but possibly game specific",
        subtitle="Success Rate = percentage of plays with EPA > 0")
-ggsave("Stage2/Stage2_SuccessRate.png", width=8, height=4, dpi=600)  
+ggsave("Stage2_New/Stage2_SuccessRate.png", width=8, height=4, dpi=600)  
 
 # Explosive play rate
 
-mycols <- RColorBrewer::brewer.pal(8, "RdYlBu")[c(6,3, 2)]
 offense_2 %>% ggplot(mapping=aes(x=sample, y=explosive_play_rate, fill=sample)) +
   geom_col(position=position_dodge(width=0.8)) +
   geom_text(aes(label=percent(round(explosive_play_rate,3))), vjust=-0.3, size=2.8, color="black") +
@@ -298,7 +291,7 @@ offense_2 %>% ggplot(mapping=aes(x=sample, y=explosive_play_rate, fill=sample)) 
   scale_y_continuous(labels=scales::percent) +
   theme(legend.position = "none") +
   labs(x="", y="Explosive play rate", title = "Bears offense explosive play rate only\nincreases dramatically in comebacks")
-ggsave("Stage2/Stage2_ExplosivePlays.png", width=7, height=4, dpi=600)  
+ggsave("Stage2_New/Stage2_ExplosivePlays.png", width=7, height=4, dpi=600)  
 
 # Pass yards per catch
 
@@ -318,13 +311,13 @@ olong %>% ggplot(mapping=aes(x=sample, y=yards)) +
   theme(legend.title = element_blank()) +
   geom_hline(yintercept=0) +
   labs(x="", y="Yards", title="Bears offense yards per reception increases slightly in the\nfourth quarter but increases much more in comebacks")
-ggsave("Stage2/Stage2_PassYds.png", width=8, height=4, dpi=600)  
+ggsave("Stage2_New/Stage2_PassYds.png", width=8, height=4, dpi=600)  
 
 # Special teams
 
-special_teams_2 <- special_teams_compare[c(1,2,3),]; special_teams_2$sample <- factor(special_teams_2$sample, c("First three quarters\nof comeback games", "Fourth quarter of\nall other games", "Fourth quarter of\ncomeback games"))
+special_teams_2 <- special_teams_compare[c(1,2,3,4),]; special_teams_2$sample <- factor(special_teams_2$sample, c("First three quarters\nof all other games", "Fourth quarter of\nall other games", "First three quarters\nof comeback games", "Fourth quarter of\ncomeback games"))
 
-mycols <- RColorBrewer::brewer.pal(8, "RdYlBu")[c(6, 3, 2)]
+mycols <- RColorBrewer::brewer.pal(8, "RdYlBu")[c(7,8,3,2)]
 special_teams_2 %>% ggplot(mapping=aes(x=sample, y=big_play_rate, fill=sample)) +
   geom_col(position=position_dodge(width=0.8)) +
   geom_text(aes(label=percent(round(big_play_rate,3))), vjust=-0.3, size=2.8, color="black") +
@@ -335,9 +328,8 @@ special_teams_2 %>% ggplot(mapping=aes(x=sample, y=big_play_rate, fill=sample)) 
   ggthemes::theme_solarized_2() +
   theme(legend.position = "none") +
   labs(x="", y="Big Play rate", title="Bears special teams Big Play rate improvement\nis not fourth quarter or game specific")
-ggsave("Stage2/Stage2_SpecialTeamsBigPlays.png", width=7, height=4, dpi=600)
+ggsave("Stage2_New/Stage2_SpecialTeamsBigPlays.png", width=7, height=4, dpi=600)
 
-mycols <- RColorBrewer::brewer.pal(8, "RdYlBu")[c(6, 3, 2)]
 special_teams_2 %>% ggplot(mapping=aes(x=sample, y=epa, fill=sample)) +
   geom_col(position=position_dodge(width=0.8)) +
   geom_text(aes(label=round(epa,3), vjust=if_else(epa>0, -0.3, 1.25)), size=2.8, color="black") +
@@ -347,7 +339,7 @@ special_teams_2 %>% ggplot(mapping=aes(x=sample, y=epa, fill=sample)) +
   ggthemes::theme_solarized_2() +
   theme(legend.position = "none") +
   labs(x="", y="EPA per play", title="Bears special teams EPA per play improves in fourth\nquarter but improves much more in comebacks")
-ggsave("Stage2/Stage2_SpecialTeamsEPA.png", width=7, height=4, dpi=600)
+ggsave("Stage2_New/Stage2_SpecialTeamsEPA.png", width=7, height=4, dpi=600)
 
 
 # Stage 3: Successful vs Failed fourth quarter comebacks and first 3 quarters of one possession games baseline ----
