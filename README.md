@@ -25,19 +25,11 @@ My full write-up is in the repository as BearsComebacksArticle.pdf and is availa
 
 ## Repository File Structure
 
-<<<<<<< HEAD
-├── data/ # Processed play-by-play datasets
-├── figures/ # Plots and tables
-
-├── scripts/ # R scripts for analysis and visualization
-├── BearsComebacksArticle.pdf # Final article
-├── LISCENSE
-=======
 ├── data/ # Processed play-by-play datasets\
-├── scripts/ # R scripts for analysis and visualization\
 ├── figures/ # Plots and tables\
-├── BearsComebacks.pdf # Final article\
->>>>>>> d031f2e71c5ef8ffcbb63c626f424c7f3a6d0947
+├── scripts/ # R scripts for analysis and visualization\
+├── BearsComebacksArticle.pdf # Final article\
+├── LISCENSE\
 └── README.md
 
 ## Contact
