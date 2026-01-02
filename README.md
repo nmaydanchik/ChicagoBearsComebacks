@@ -25,11 +25,11 @@ My full write-up is in the repository as BearsComebacksArticle.pdf and is availa
 
 ## Repository File Structure
 
-├── data/ # Processed play-by-play datasets\
-├── figures/ # Plots and tables\
-├── scripts/ # R scripts for analysis and visualization\
-├── BearsComebacksArticle.pdf # Final article\
-├── LISCENSE\
+├── data/ # Processed play-by-play datasets
+├── figures/ # Plots and tables
+├── scripts/ # R scripts for analysis and visualization
+├── BearsComebacksArticle.pdf # Final article
+├── LISCENSE
 └── README.md
 
 ## Contact
