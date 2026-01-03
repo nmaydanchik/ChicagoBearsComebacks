@@ -10,7 +10,7 @@ This project highlights my ability to:
 
 * Collect and process data
 * Reconcile my data with other available statistics
-* Plan and execute a multi-stage data analysis
+* Strategically plan and execute a multi-stage data analysis
 * Manipulate and analyze data in R (tidyverse)
 * Generate clear data visualizations (ggplot2, patchwork)
 * Communicate findings in writing
