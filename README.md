@@ -29,7 +29,7 @@ My full write-up is in the repository as BearsComebacksArticle.pdf and is availa
 ├── figures/ # Plots and tables
 ├── scripts/ # R scripts for analysis and visualization
 ├── BearsComebacksArticle.pdf # Final article
-├── LISCENSE
+├── LICENSE
 └── README.md
 
 ## Contact
