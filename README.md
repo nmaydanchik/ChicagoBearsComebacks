@@ -4,7 +4,7 @@
 
 This repository contains the materials of my data science project where I analyzed play-by-play data to determine **the driving factors behind the Chicago Bears' six comebacks during the first 17 weeks of the 2025 season.**
 
-Project Dates: 12/17/25-12/31/25
+Project Dates: 12/17/25-12/31/25 (Freshman -- UCLA)
 
 This project highlights my ability to:
 
